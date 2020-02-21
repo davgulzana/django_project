@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Authors Page</title>
+{% endblock %}
+
+{% block content %}
+{% for author in authors %}
+<div class="card">
+    <h4 class="card-header">{{ author.name }} {{author.last_name }}</h4>
+    <div class="card-body">
+        <h5 class="card-title"><b>{{ author.date_birth }}</b></h5>
+        <i><p class="card-text">{{ author.biography }}</p></i>
+        {% for book in author.books.all %}
+            {{ book.title }}
+            {% for genre in book.genre.all %}
+        <ul>
+                <li><p>{{ genre.title }} </p></li>
+        </ul>
+            {% endfor %}
+        {% endfor %}
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

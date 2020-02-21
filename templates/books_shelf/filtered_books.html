@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+{% for book in filtered_books %}
+<div class="card">
+    <h4 class="card-header">{{ book.title }}</h4>
+    <div class="card-body">
+        <h5 class="card-title"><b>{{ book.author }}</b></h5>
+        {% if book.pub_date %}
+        <h6>{{ book.pub_date }}</h6>
+        {% else %}
+        <h6>Неизвестно</h6>
+        {% endif %}
+        {% if book.pages %}
+        <h6>{{ book.pages }}</h6>
+        {% else %}
+        <h6>Неизвестно</h6>
+        {% endif %}
+        <p class="card-text">{{ book.description }}</p>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
